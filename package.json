@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.11",
+    "tailwindcss": "^4.1.11"
+  },
+  "scripts": {
+    "build:css": "npx tailwindcss -i ./monitoreo_deportivo_app/static/css/input.css -o ./monitoreo_deportivo_app/static/css/output.css --minify",
+    "watch:css": "npx tailwindcss -i ./monitoreo_deportivo_app/static/css/input.css -o ./monitoreo_deportivo_app/static/css/output.css --watch",
+    "dev": "concurrently \"npm run watch:css\" \"python3 manage.py runserver 8002\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
+}
