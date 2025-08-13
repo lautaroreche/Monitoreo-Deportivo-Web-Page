@@ -25,7 +25,7 @@
     <main class="relative isolate min-h-screen w-full overflow-hidden">
         <div class="absolute inset-0 -z-10">
             <div class="h-full w-full bg-[url('https://res.cloudinary.com/dbmamjgiv/image/upload/v1755035982/pexels-joaquin-carfagna-3131171-16715725_jh5zwn.webp')] bg-cover bg-center"></div>
-            <div class="absolute inset-0 bg-black/70"></div>
+            <div class="absolute inset-0 bg-black/50"></div>
         </div>
 
         <div class="mx-auto flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-24 h-screen max-w-7xl">
@@ -33,7 +33,7 @@
                 <h1 class="text-5xl font-black leading-[1.05] tracking-tight sm:text-6xl md:text-7xl">
                     REVIVÍ TU PARTIDO
                 </h1>
-                <p class="mx-auto mt-4 max-w-2xl text-white text-lg md:text-xl">
+                <p class="mx-auto mt-4 max-w-2xl text-white text-xl">
                     Encontrá tus jugadas y compartilas con tus amigos
                 </p>
             </div>
@@ -49,14 +49,12 @@
                             <option>Estadio Sur</option>
                         </select>
                         <span class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-neutral-500">
-                            <!-- Chevron -->
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6" />
                             </svg>
                         </span>
                     </div>
 
-                    <!-- Cancha -->
                     <div class="relative">
                         <label class="sr-only" for="cancha">Cancha</label>
                         <select id="cancha" name="cancha" class="w-full appearance-none rounded-2xl border-0 bg-white px-4 py-3 pr-10 text-sm font-medium text-neutral-800 shadow-lg shadow-black/10 ring-1 ring-black/10 focus:outline-none focus:ring-2 focus:ring-blue-400 cursor-pointer">
@@ -71,7 +69,6 @@
                         </span>
                     </div>
 
-                    <!-- Día -->
                     <div class="relative">
                         <label class="sr-only" for="dia">Día</label>
                         <select id="dia" name="dia" class="w-full appearance-none rounded-2xl border-0 bg-white px-4 py-3 pr-10 text-sm font-medium text-neutral-800 shadow-lg shadow-black/10 ring-1 ring-black/10 focus:outline-none focus:ring-2 focus:ring-blue-400 cursor-pointer">
@@ -86,7 +83,6 @@
                         </span>
                     </div>
 
-                    <!-- Horario -->
                     <div class="relative">
                         <label class="sr-only" for="horario">Horario</label>
                         <select id="horario" name="horario" class="w-full appearance-none rounded-2xl border-0 bg-white px-4 py-3 pr-10 text-sm font-medium text-neutral-800 shadow-lg shadow-black/10 ring-1 ring-black/10 focus:outline-none focus:ring-2 focus:ring-blue-400 cursor-pointer">
@@ -101,9 +97,8 @@
                         </span>
                     </div>
 
-                    <!-- CTA -->
                     <div class="flex">
-                        <button type="submit" class="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-blue-400 px-6 py-3 text-sm font-extrabold uppercase tracking-wide text-black shadow-sm shadow-blue-500/30 transition hover:bg-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 cursor-pointer">
+                        <button type="submit" class="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-blue-400 px-6 py-3 text-sm font-extrabold uppercase tracking-wide text-black shadow-sm shadow-blue-500/30 transition hover:bg-blue-500 focus:outline-none cursor-pointer">
                             Ver partido
                         </button>
                     </div>
@@ -111,6 +106,8 @@
             </form>
         </div>
     </main>
+
+    {% include 'banner_venta.html' %}    
 
     {% include 'footer.html' %}
 
