@@ -33,20 +33,18 @@
                 <h1 class="text-5xl font-black leading-[1.05] tracking-tight sm:text-6xl md:text-7xl">
                     REVIVÍ TU PARTIDO
                 </h1>
-                <p class="mx-auto mt-4 max-w-2xl text-white text-xl">
+                <p class="mx-auto mt-4 max-w-3xl text-white text-xl font-semibold">
                     Encontrá tus jugadas y compartilas con tus amigos
                 </p>
             </div>
 
-            <form action="#" method="GET" class="mt-8 w-full max-w-md">
+            <form action="#" method="GET" class="mt-8 w-full max-w-sm">
                 <div class="space-y-3">
                     <div class="relative">
-                        <label class="sr-only" for="sede">Sede</label>
-                        <select id="sede" name="sede" class="w-full appearance-none rounded-2xl border-0 bg-white px-4 py-3 pr-10 text-sm font-medium text-neutral-800 shadow-lg shadow-black/10 ring-1 ring-black/10 focus:outline-none focus:ring-2 focus:ring-blue-400 cursor-pointer">
-                            <option>A DOS TOQUES (ROSARIO)</option>
-                            <option>Club Central</option>
-                            <option>Parque Norte</option>
-                            <option>Estadio Sur</option>
+                        <label class="sr-only" for="country">Pais</label>
+                        <select id="country" name="country" class="w-full appearance-none rounded-2xl border-0 bg-white px-4 py-3 pr-10 text-sm font-medium text-neutral-800 shadow-lg shadow-black/10 ring-1 ring-black/10 focus:outline-none focus:ring-2 focus:ring-blue-400 cursor-pointer">
+                            <option>Argentina</option>
+                            <option>Irlanda</option>
                         </select>
                         <span class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-neutral-500">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4">
@@ -56,11 +54,12 @@
                     </div>
 
                     <div class="relative">
-                        <label class="sr-only" for="cancha">Cancha</label>
-                        <select id="cancha" name="cancha" class="w-full appearance-none rounded-2xl border-0 bg-white px-4 py-3 pr-10 text-sm font-medium text-neutral-800 shadow-lg shadow-black/10 ring-1 ring-black/10 focus:outline-none focus:ring-2 focus:ring-blue-400 cursor-pointer">
-                            <option>Cancha 1</option>
-                            <option>Cancha 2</option>
-                            <option>Cancha 3</option>
+                        <label class="sr-only" for="complex">Complejo</label>
+                        <select id="complex" name="complex" class="w-full appearance-none rounded-2xl border-0 bg-white px-4 py-3 pr-10 text-sm font-medium text-neutral-800 shadow-lg shadow-black/10 ring-1 ring-black/10 focus:outline-none focus:ring-2 focus:ring-blue-400 cursor-pointer">
+                            <option>Complejo 1</option>
+                            <option>Complejo 2</option>
+                            <option>Complejo 3</option>
+                            <option>Complejo 4</option>
                         </select>
                         <span class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-neutral-500">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4">
@@ -70,11 +69,11 @@
                     </div>
 
                     <div class="relative">
-                        <label class="sr-only" for="dia">Día</label>
-                        <select id="dia" name="dia" class="w-full appearance-none rounded-2xl border-0 bg-white px-4 py-3 pr-10 text-sm font-medium text-neutral-800 shadow-lg shadow-black/10 ring-1 ring-black/10 focus:outline-none focus:ring-2 focus:ring-blue-400 cursor-pointer">
-                            <option>Sábado 9</option>
-                            <option>Domingo 10</option>
-                            <option>Lunes 11</option>
+                        <label class="sr-only" for="date">Fecha</label>
+                        <select id="date" name="date" class="w-full appearance-none rounded-2xl border-0 bg-white px-4 py-3 pr-10 text-sm font-medium text-neutral-800 shadow-lg shadow-black/10 ring-1 ring-black/10 focus:outline-none focus:ring-2 focus:ring-blue-400 cursor-pointer">
+                            <option>Lunes 01/01</option>
+                            <option>Martes 02/01</option>
+                            <option>Miércoles 03/01</option>
                         </select>
                         <span class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-neutral-500">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4">
@@ -84,11 +83,11 @@
                     </div>
 
                     <div class="relative">
-                        <label class="sr-only" for="horario">Horario</label>
-                        <select id="horario" name="horario" class="w-full appearance-none rounded-2xl border-0 bg-white px-4 py-3 pr-10 text-sm font-medium text-neutral-800 shadow-lg shadow-black/10 ring-1 ring-black/10 focus:outline-none focus:ring-2 focus:ring-blue-400 cursor-pointer">
-                            <option>17:00 a 18:20</option>
-                            <option>18:30 a 19:50</option>
-                            <option>20:00 a 21:20</option>
+                        <label class="sr-only" for="time">Horario</label>
+                        <select id="time" name="time" class="w-full appearance-none rounded-2xl border-0 bg-white px-4 py-3 pr-10 text-sm font-medium text-neutral-800 shadow-lg shadow-black/10 ring-1 ring-black/10 focus:outline-none focus:ring-2 focus:ring-blue-400 cursor-pointer">
+                            <option>00:00 a 01:00</option>
+                            <option>01:00 a 02:00</option>
+                            <option>02:00 a 03:00</option>
                         </select>
                         <span class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-neutral-500">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4">
