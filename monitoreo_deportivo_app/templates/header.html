@@ -1,21 +1,11 @@
 {% load static %}
 
 
-<header class="absolute inset-x-0 top-0 z-40">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3">
-        <div class="flex items-center justify-between h-16">
-            <a href="/" class="flex items-center gap-2 text-white">
-                <img src="{% static 'images/logo.webp' %}" alt="Logo Monitoreo Deportivo" class="w-14">
-                <span class="text-xl font-extrabold tracking-tight">Monitoreo <span class="text-blue-400">Deportivo</span></span>
-            </a>
-
-            <div class="flex items-center gap-3">
-                <button aria-label="Menú" class="group inline-flex h-10 w-11 items-center justify-center rounded-xl bg-white/10 text-white backdrop-blur transition hover:bg-white/20 cursor-pointer">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-9 w-9">
-                        <path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16" />
-                    </svg>
-                </button>
-            </div>
-        </div>
+<header>
+    <div class="absolute inset-x-0 top-0 z-40 px-4 sm:px-6 lg:px-8 py-4">
+        <a href="/" class="flex items-center gap-2 text-white">
+            <img src="{% static 'images/logo.webp' %}" alt="Logo Monitoreo Deportivo" class="w-14">
+            <span class="text-xl font-extrabold tracking-tight">Monitoreo <span class="text-blue-400">Deportivo</span></span>
+        </a>
     </div>
 </header>

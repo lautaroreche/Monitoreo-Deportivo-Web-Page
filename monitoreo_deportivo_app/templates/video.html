@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+{% endblock %}
+
+{% block content %}
+    <main class="flex justify-center items-center w-full h-screen pt-4 bg-black">
+        <div class="w-[95vw]">
+            <video id="player" data-src="{{ video_url }}" controls playsinline crossorigin="anonymous" class="w-full h-[80vh] bg-black object-contain"></video>
+
+            <div class="flex justify-center items-center gap-6 flex-wrap bg-black text-white text-sm">
+                <h2 class="text-lg font-bold">Crea tu clip</h2>
+                <div class="flex gap-1">
+                    <button id="markInBtn" class="px-2 py-1 rounded bg-green-400 hover:bg-green-500 font-semibold">Seleccionar inicio</button>
+                    <span class="px-2 py-1 grid place-items-center">
+                        <b id="inLabel">--:--:-- </b>
+                    </span>
+                </div>
+                <div class="flex gap-1">
+                    <button id="markOutBtn" class="px-2 py-1 rounded bg-red-400 hover:bg-red-500 font-semibold">Seleccionar fin</button>
+                    <span class="px-2 py-1 grid place-items-center">
+                        <b id="outLabel">--:--:-- </b>
+                    </span>
+                </div>
+                <button id="downloadBtn" class="px-2 py-1 rounded bg-amber-400 text-black font-bold hover:bg-amber-500">Descargar</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // ====== Carga de fuente (MP4 u HLS) ======
+        const video = document.getElementById('player');
+        const src = video.dataset.src;
+        if (Hls.isSupported() && /\.m3u8(\?|$)/.test(src)) {
+            const hls = new Hls();
+            hls.loadSource(src);
+            hls.attachMedia(video);
+        } else {
+            video.src = src;
+        }
+
+        // ====== Clipping sin pausar ni hacer seek ======
+        let inTime = null, outTime = null;
+        let mediaRecorder = null;
+        let chunks = [];
+
+        const inLabel  = document.getElementById('inLabel');
+        const outLabel = document.getElementById('outLabel');
+
+        const fmtNoMs = (t) => {
+            const s  = Math.floor(t) % 60;
+            const m  = Math.floor(t / 60) % 60;
+            const h  = Math.floor(t / 3600);
+            return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+        };
+
+        document.getElementById('markInBtn').addEventListener('click', () => {
+            inTime = video.currentTime;
+            inLabel.textContent = fmtNoMs(inTime);
+
+            // Si ya había grabación abierta, cerrarla
+            if (mediaRecorder && mediaRecorder.state !== 'inactive') mediaRecorder.stop();
+
+            chunks = [];
+            const stream = video.captureStream();
+            mediaRecorder = new MediaRecorder(stream);
+            mediaRecorder.ondataavailable = e => { if (e.data.size) chunks.push(e.data); };
+            mediaRecorder.onstop = () => {
+                // Guardamos el último clip en memoria (WebM rápido)
+                window._lastClipBlob = new Blob(chunks, { type: 'video/webm' });
+            };
+            mediaRecorder.start(); // NO tocamos el video; sigue reproduciendo
+        });
+
+        document.getElementById('markOutBtn').addEventListener('click', () => {
+            outTime = video.currentTime;
+            outLabel.textContent = fmtNoMs(outTime);
+            if (mediaRecorder && mediaRecorder.state !== 'inactive') mediaRecorder.stop();
+        });
+
+        document.getElementById('downloadBtn').addEventListener('click', () => {
+            if (!window._lastClipBlob) {
+                alert('Primero marcá IN y OUT.');
+                return;
+            }
+            const url = URL.createObjectURL(window._lastClipBlob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'clip.webm'; // si querés MP4, conviene hacerlo en backend (FFmpeg)
+            a.click();
+            URL.revokeObjectURL(url);
+        });
+    </script>
+{% endblock %}

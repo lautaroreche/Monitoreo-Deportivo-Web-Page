@@ -1,0 +1,32 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Monitoreo Deportivo web page">
+    <meta name="keywords" content="monitoreo deportivo, análisis de rendimiento deportivo, tecnología deportiva, seguimiento en tiempo real, control de entrenamiento, análisis de datos deportivos, métricas deportivas, wearables deportivos, software de monitoreo, análisis de performance, control de actividad física, big data deportivo, entrenamiento inteligente, seguimiento de atletas, análisis de partidos, control físico, preparación física, rendimiento atlético, monitoreo en vivo, evaluación deportiva">
+    <title>Monitoreo Deportivo</title>
+    <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/output.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    {% block meta %}{% endblock %}
+    <style>
+        body { opacity: 0; transition: opacity 0.1s ease-in; }
+    </style>
+</head>
+<body>
+    {% include 'header.html' %}
+
+    {% block content %}{% endblock %}
+
+    {% include 'footer.html' %}
+
+    {% include 'scripts.html' %}
+</body>
+</html>
