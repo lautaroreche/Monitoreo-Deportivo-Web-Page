@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
+
 {% block meta %}
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -31,7 +32,7 @@
     </main>
 
     <script>
-        // ====== Carga de fuente (MP4 u HLS) ======
+        // Load MP4 u HLS)
         const video = document.getElementById('player');
         const src = video.dataset.src;
         if (Hls.isSupported() && /\.m3u8(\?|$)/.test(src)) {
@@ -42,7 +43,7 @@
             video.src = src;
         }
 
-        // ====== Clipping sin pausar ni hacer seek ======
+        // Clipping without pause or seek
         let inTime = null, outTime = null;
         let mediaRecorder = null;
         let chunks = [];
@@ -61,7 +62,6 @@
             inTime = video.currentTime;
             inLabel.textContent = fmtNoMs(inTime);
 
-            // Si ya había grabación abierta, cerrarla
             if (mediaRecorder && mediaRecorder.state !== 'inactive') mediaRecorder.stop();
 
             chunks = [];
@@ -69,10 +69,10 @@
             mediaRecorder = new MediaRecorder(stream);
             mediaRecorder.ondataavailable = e => { if (e.data.size) chunks.push(e.data); };
             mediaRecorder.onstop = () => {
-                // Guardamos el último clip en memoria (WebM rápido)
+                // Save last clip on memoriy (WebM fast)
                 window._lastClipBlob = new Blob(chunks, { type: 'video/webm' });
             };
-            mediaRecorder.start(); // NO tocamos el video; sigue reproduciendo
+            mediaRecorder.start();
         });
 
         document.getElementById('markOutBtn').addEventListener('click', () => {
@@ -89,7 +89,7 @@
             const url = URL.createObjectURL(window._lastClipBlob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'clip.webm'; // si querés MP4, conviene hacerlo en backend (FFmpeg)
+            a.download = 'clip.webm';
             a.click();
             URL.revokeObjectURL(url);
         });
